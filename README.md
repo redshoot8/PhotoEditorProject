@@ -1,7 +1,9 @@
 # Photo Editor
 
 Windows download: *Later*
+
 Linux download: *Later*
+
 Mac donwload: *Later*
 
 Free photo editor on Python, using PySide6 and Pillow. Can work with png, jpg, bmp formats. *More formats later*.
