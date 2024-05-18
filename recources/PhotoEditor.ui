@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #2E2E2E;</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="imageWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>600</width>
+      <height>600</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFFFFF;
+background-color: #3C3C3C;</string>
+    </property>
+    <property name="text">
+     <string>Image</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="openFileButton">
+    <property name="geometry">
+     <rect>
+      <x>625</x>
+      <y>60</y>
+      <width>150</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+	background-color: #3C3C3C;
+	color: #FFFFFF;
+	border: 1px solid #5A5A5A;
+	border-radius: 20px;
+}
+
+QPushButton:hover
+{
+	background-color: #8E24AA;
+}
+
+QPushButton:pressed
+{
+	background-color: #3C3C3C;
+}</string>
+    </property>
+    <property name="text">
+     <string>Open file</string>
+    </property>
+    <property name="icon">
+     <iconset resource="res_rs.qrc">
+      <normaloff>:/icon/recources/icons/folder.svg</normaloff>:/icon/recources/icons/folder.svg</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="applyFilterButton">
+    <property name="geometry">
+     <rect>
+      <x>625</x>
+      <y>260</y>
+      <width>150</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+	background-color: #3C3C3C;
+	color: #FFFFFF;
+	border: 1px solid #5A5A5A;
+	border-radius: 20px;
+}
+
+QPushButton:hover
+{
+	background-color: #8E24AA;
+}
+
+QPushButton:pressed
+{
+	background-color: #3C3C3C;
+}</string>
+    </property>
+    <property name="text">
+     <string>Apply filter</string>
+    </property>
+    <property name="icon">
+     <iconset resource="res_rs.qrc">
+      <normaloff>:/icon/recources/icons/filter.svg</normaloff>:/icon/recources/icons/filter.svg</iconset>
+    </property>
+   </widget>
+   <widget class="QLabel" name="filterHeader">
+    <property name="geometry">
+     <rect>
+      <x>625</x>
+      <y>160</y>
+      <width>150</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: none;</string>
+    </property>
+    <property name="text">
+     <string>Filter</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>625</x>
+      <y>210</y>
+      <width>150</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #3C3C3C;
+color: #FFFFFF;
+border: 1px solid #5A5A5A;
+padding-left: 5px;</string>
+    </property>
+    <property name="placeholderText">
+     <string>Choose Filter</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Blur</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>BoxBlur</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Contour</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Detail</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>EdgeEnhance</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>EdgeEnhanceMore</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Emboss</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>FindEdges</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GaussianBlur</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Kernel</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Sharpen</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Smooth</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>SmoothMore</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="saveFileButton">
+    <property name="geometry">
+     <rect>
+      <x>625</x>
+      <y>110</y>
+      <width>150</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+	background-color: #1E88E5;
+	color: #FFFFFF;
+	border: 1px solid #5A5A5A;
+	border-radius: 20px;
+}
+
+QPushButton:hover
+{
+	background-color: #8E24AA;
+}
+
+QPushButton:pressed
+{
+	background-color: #1E88E5;
+}</string>
+    </property>
+    <property name="text">
+     <string>Save file</string>
+    </property>
+    <property name="icon">
+     <iconset resource="res_rs.qrc">
+      <normaloff>:/icon/recources/icons/save.svg</normaloff>:/icon/recources/icons/save.svg</iconset>
+    </property>
+   </widget>
+   <widget class="QLabel" name="fileHeader">
+    <property name="geometry">
+     <rect>
+      <x>625</x>
+      <y>10</y>
+      <width>150</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: none;</string>
+    </property>
+    <property name="text">
+     <string>File</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="optionsHeader">
+    <property name="geometry">
+     <rect>
+      <x>625</x>
+      <y>310</y>
+      <width>150</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: none;</string>
+    </property>
+    <property name="text">
+     <string>Options</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="reflectVertButton">
+    <property name="geometry">
+     <rect>
+      <x>625</x>
+      <y>360</y>
+      <width>150</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+	background-color: #3C3C3C;
+	color: #FFFFFF;
+	border: 1px solid #5A5A5A;
+	border-radius: 20px;
+}
+
+QPushButton:hover
+{
+	background-color: #8E24AA;
+}
+
+QPushButton:pressed
+{
+	background-color: #3C3C3C;
+}</string>
+    </property>
+    <property name="text">
+     <string>Reflect vertically</string>
+    </property>
+    <property name="icon">
+     <iconset resource="res_rs.qrc">
+      <normaloff>:/icon/recources/icons/reflect_vertically.svg</normaloff>:/icon/recources/icons/reflect_vertically.svg</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="reflectHorizonButton">
+    <property name="geometry">
+     <rect>
+      <x>625</x>
+      <y>410</y>
+      <width>150</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+	background-color: #3C3C3C;
+	color: #FFFFFF;
+	border: 1px solid #5A5A5A;
+	border-radius: 20px;
+}
+
+QPushButton:hover
+{
+	background-color: #8E24AA;
+}
+
+QPushButton:pressed
+{
+	background-color: #3C3C3C;
+}</string>
+    </property>
+    <property name="text">
+     <string>Reflect horizontally</string>
+    </property>
+    <property name="icon">
+     <iconset resource="res_rs.qrc">
+      <normaloff>:/icon/recources/icons/reflect_horizontally.svg</normaloff>:/icon/recources/icons/reflect_horizontally.svg</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="rotateButton">
+    <property name="geometry">
+     <rect>
+      <x>625</x>
+      <y>460</y>
+      <width>150</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+	background-color: #3C3C3C;
+	color: #FFFFFF;
+	border: 1px solid #5A5A5A;
+	border-radius: 20px;
+}
+
+QPushButton:hover
+{
+	background-color: #8E24AA;
+}
+
+QPushButton:pressed
+{
+	background-color: #3C3C3C;
+}</string>
+    </property>
+    <property name="text">
+     <string>Rotate</string>
+    </property>
+    <property name="icon">
+     <iconset resource="res_rs.qrc">
+      <normaloff>:/icon/recources/icons/rotate.svg</normaloff>:/icon/recources/icons/rotate.svg</iconset>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="res_rs.qrc"/>
+ </resources>
+ <connections/>
+</ui>
