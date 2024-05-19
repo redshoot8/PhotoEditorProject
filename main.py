@@ -1,11 +1,13 @@
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
+from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QDialog
 from PySide6.QtGui import QPixmap
 from UiPhotoEditor import Ui_MainWindow
+from UiOpenURLDialog import Ui_Dialog
+from PIL import Image, ImageFilter
 import sys
 import os
 import tempfile
-from PIL import Image, ImageFilter
+import requests
 
 
 class PhotoEditor(QMainWindow):
@@ -14,14 +16,18 @@ class PhotoEditor(QMainWindow):
         """Photo Editor constructor"""
         super(PhotoEditor, self).__init__()
         self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)  # Applying UI from PhotoEditor.ui compiled as PhotoEditor.py
+        self.ui_dialog = None
+        self.ui.setupUi(self)  # Applying UI from PhotoEditor.ui compiled as UiPhotoEditor.py
 
         # Fields
         self.image_path = None  # Path to current image file
+        self.url = None  # URL to current image file
         self.temp_file_path = None  # Path to temporary image file
+        self.dialog = None  # Dialog window
 
         # Connecting button signals with slots
         self.ui.openFileButton.clicked.connect(self.open_file)  # Open file button
+        self.ui.openURLButton.clicked.connect(self.open_via_url)  # Open via URL button
         self.ui.saveFileButton.clicked.connect(self.save_file)  # Save file button
         self.ui.applyFilterButton.clicked.connect(self.apply_filter)  # Apply filter button
         self.ui.reflectVertButton.clicked.connect(self.reflect_vertically)  # Reflect vertically button
@@ -40,6 +46,39 @@ class PhotoEditor(QMainWindow):
             self.temp_file_path = temp_file.name
             Image.open(self.image_path).save(self.temp_file_path)
             self.show_changes()
+
+    def open_via_url(self) -> None:  # Open via url slot
+        """Opening the dialog window for URL edit"""
+        self.dialog = QDialog()
+        self.ui_dialog = Ui_Dialog()
+        self.ui_dialog.setupUi(self.dialog)  # Applying UI from OpenURLDialog.ui compiled as UiOpenURLDialog.py
+        self.dialog.show()
+
+        self.ui_dialog.URLButton.clicked.connect(self.open_url)  # Open URL button
+
+        if self.ui_dialog.URLError.text():
+            self.ui_dialog.URLError.setText("")  # Clearing error field
+
+    def open_url(self) -> None:
+        """Opening the image via url and saving it in temporary file"""
+        self.url = self.ui_dialog.URLEdit.text()
+
+        if self.url:
+            response = None
+            try:
+                response = requests.get(self.url, stream=True).raw
+            except requests.exceptions.RequestException as e:
+                self.ui_dialog.URLEdit.setText(e)
+            if response:
+                try:
+                    temp_file = tempfile.NamedTemporaryFile(suffix=os.path.splitext(self.url)[1], delete=False)
+                    self.temp_file_path = temp_file.name
+                    print(self.temp_file_path)
+                    Image.open(response).save(self.temp_file_path)
+                    self.show_changes()
+                    self.dialog.hide()
+                except IOError:
+                    self.ui_dialog.URLEdit.setText("Unable to open Image")
 
     def show_changes(self) -> None:
         """Shows the changes of image after any edit options"""
@@ -74,7 +113,7 @@ class PhotoEditor(QMainWindow):
             if self.ui.comboBox.currentText() == "Blur":
                 image = image.filter(ImageFilter.BLUR)
             elif self.ui.comboBox.currentText() == "BoxBlur":
-                image = image.filter(ImageFilter.BoxBlur)
+                image = image.filter(ImageFilter.BoxBlur(radius=50))
             elif self.ui.comboBox.currentText() == "Contour":
                 image = image.filter(ImageFilter.CONTOUR)
             elif self.ui.comboBox.currentText() == "Detail":
@@ -90,7 +129,7 @@ class PhotoEditor(QMainWindow):
             elif self.ui.comboBox.currentText() == "GaussianBlur":
                 image = image.filter(ImageFilter.GaussianBlur)
             elif self.ui.comboBox.currentText() == "Kernel":
-                image = image.filter(ImageFilter.Kernel)
+                image = image.filter(ImageFilter.Kernel((3, 3), (2, 2, 2, 2, 2, 2, 2, 2, 2)))
             elif self.ui.comboBox.currentText() == "Sharpen":
                 image = image.filter(ImageFilter.SHARPEN)
             elif self.ui.comboBox.currentText() == "Smooth":
@@ -104,7 +143,7 @@ class PhotoEditor(QMainWindow):
         """Reflecting current image vertically"""
         if self.temp_file_path:
             image = Image.open(self.temp_file_path)
-            image = image.transpose(Image.Transpose.FLIP_TOP_BOTTOM)
+            image = image.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
             image.save(self.temp_file_path)
             self.show_changes()
 
@@ -112,7 +151,7 @@ class PhotoEditor(QMainWindow):
         """Reflecting current image horizontally"""
         if self.temp_file_path:
             image = Image.open(self.temp_file_path)
-            image = image.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+            image = image.transpose(Image.Transpose.FLIP_TOP_BOTTOM)
             image.save(self.temp_file_path)
             self.show_changes()
 

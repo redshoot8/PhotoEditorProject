@@ -1,0 +1,5 @@
+pyside6-rcc resources\res_rс.qrc -o res_rc.py
+
+pyside6-uic resources\OpenURLDialog.ui -o UiOpenURLDialog.py
+
+pyside6-uic resources\PhotoEditor.ui -o UiPhotoEditor.py

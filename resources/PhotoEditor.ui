@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Photo Editor</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: #2E2E2E;</string>
@@ -74,15 +74,15 @@ QPushButton:pressed
      <string>Open file</string>
     </property>
     <property name="icon">
-     <iconset resource="res_rs.qrc">
-      <normaloff>:/icon/recources/icons/folder.svg</normaloff>:/icon/recources/icons/folder.svg</iconset>
+     <iconset resource="res_rс.qrc">
+      <normaloff>:/icon/icons/folder.svg</normaloff>:/icon/icons/folder.svg</iconset>
     </property>
    </widget>
    <widget class="QPushButton" name="applyFilterButton">
     <property name="geometry">
      <rect>
       <x>625</x>
-      <y>260</y>
+      <y>310</y>
       <width>150</width>
       <height>40</height>
      </rect>
@@ -115,15 +115,15 @@ QPushButton:pressed
      <string>Apply filter</string>
     </property>
     <property name="icon">
-     <iconset resource="res_rs.qrc">
-      <normaloff>:/icon/recources/icons/filter.svg</normaloff>:/icon/recources/icons/filter.svg</iconset>
+     <iconset resource="res_rс.qrc">
+      <normaloff>:/icon/icons/filter.svg</normaloff>:/icon/icons/filter.svg</iconset>
     </property>
    </widget>
    <widget class="QLabel" name="filterHeader">
     <property name="geometry">
      <rect>
       <x>625</x>
-      <y>160</y>
+      <y>210</y>
       <width>150</width>
       <height>40</height>
      </rect>
@@ -134,7 +134,8 @@ QPushButton:pressed
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: none;</string>
+     <string notr="true">background-color: none;
+color: #FFFFFF;</string>
     </property>
     <property name="text">
      <string>Filter</string>
@@ -150,7 +151,7 @@ QPushButton:pressed
     <property name="geometry">
      <rect>
       <x>625</x>
-      <y>210</y>
+      <y>260</y>
       <width>150</width>
       <height>40</height>
      </rect>
@@ -239,7 +240,7 @@ padding-left: 5px;</string>
     <property name="geometry">
      <rect>
       <x>625</x>
-      <y>110</y>
+      <y>160</y>
       <width>150</width>
       <height>40</height>
      </rect>
@@ -272,8 +273,8 @@ QPushButton:pressed
      <string>Save file</string>
     </property>
     <property name="icon">
-     <iconset resource="res_rs.qrc">
-      <normaloff>:/icon/recources/icons/save.svg</normaloff>:/icon/recources/icons/save.svg</iconset>
+     <iconset resource="res_rс.qrc">
+      <normaloff>:/icon/icons/save.svg</normaloff>:/icon/icons/save.svg</iconset>
     </property>
    </widget>
    <widget class="QLabel" name="fileHeader">
@@ -291,7 +292,8 @@ QPushButton:pressed
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: none;</string>
+     <string notr="true">background-color: none;
+color: #FFFFFF;</string>
     </property>
     <property name="text">
      <string>File</string>
@@ -307,7 +309,7 @@ QPushButton:pressed
     <property name="geometry">
      <rect>
       <x>625</x>
-      <y>310</y>
+      <y>360</y>
       <width>150</width>
       <height>40</height>
      </rect>
@@ -318,7 +320,8 @@ QPushButton:pressed
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: none;</string>
+     <string notr="true">background-color: none;
+color: #FFFFFF;</string>
     </property>
     <property name="text">
      <string>Options</string>
@@ -331,47 +334,6 @@ QPushButton:pressed
     </property>
    </widget>
    <widget class="QPushButton" name="reflectVertButton">
-    <property name="geometry">
-     <rect>
-      <x>625</x>
-      <y>360</y>
-      <width>150</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton
-{
-	background-color: #3C3C3C;
-	color: #FFFFFF;
-	border: 1px solid #5A5A5A;
-	border-radius: 20px;
-}
-
-QPushButton:hover
-{
-	background-color: #8E24AA;
-}
-
-QPushButton:pressed
-{
-	background-color: #3C3C3C;
-}</string>
-    </property>
-    <property name="text">
-     <string>Reflect vertically</string>
-    </property>
-    <property name="icon">
-     <iconset resource="res_rs.qrc">
-      <normaloff>:/icon/recources/icons/reflect_vertically.svg</normaloff>:/icon/recources/icons/reflect_vertically.svg</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="reflectHorizonButton">
     <property name="geometry">
      <rect>
       <x>625</x>
@@ -405,14 +367,14 @@ QPushButton:pressed
 }</string>
     </property>
     <property name="text">
-     <string>Reflect horizontally</string>
+     <string>Reflect vertically</string>
     </property>
     <property name="icon">
-     <iconset resource="res_rs.qrc">
-      <normaloff>:/icon/recources/icons/reflect_horizontally.svg</normaloff>:/icon/recources/icons/reflect_horizontally.svg</iconset>
+     <iconset resource="res_rс.qrc">
+      <normaloff>:/icon/icons/reflect_vertically.svg</normaloff>:/icon/icons/reflect_vertically.svg</iconset>
     </property>
    </widget>
-   <widget class="QPushButton" name="rotateButton">
+   <widget class="QPushButton" name="reflectHorizonButton">
     <property name="geometry">
      <rect>
       <x>625</x>
@@ -446,17 +408,99 @@ QPushButton:pressed
 }</string>
     </property>
     <property name="text">
+     <string>Reflect horizontally</string>
+    </property>
+    <property name="icon">
+     <iconset resource="res_rс.qrc">
+      <normaloff>:/icon/icons/reflect_horizontally.svg</normaloff>:/icon/icons/reflect_horizontally.svg</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="rotateButton">
+    <property name="geometry">
+     <rect>
+      <x>625</x>
+      <y>510</y>
+      <width>150</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+	background-color: #3C3C3C;
+	color: #FFFFFF;
+	border: 1px solid #5A5A5A;
+	border-radius: 20px;
+}
+
+QPushButton:hover
+{
+	background-color: #8E24AA;
+}
+
+QPushButton:pressed
+{
+	background-color: #3C3C3C;
+}</string>
+    </property>
+    <property name="text">
      <string>Rotate</string>
     </property>
     <property name="icon">
-     <iconset resource="res_rs.qrc">
-      <normaloff>:/icon/recources/icons/rotate.svg</normaloff>:/icon/recources/icons/rotate.svg</iconset>
+     <iconset resource="res_rс.qrc">
+      <normaloff>:/icon/icons/rotate.svg</normaloff>:/icon/icons/rotate.svg</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="openURLButton">
+    <property name="geometry">
+     <rect>
+      <x>625</x>
+      <y>110</y>
+      <width>150</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+	background-color: #3C3C3C;
+	color: #FFFFFF;
+	border: 1px solid #5A5A5A;
+	border-radius: 20px;
+}
+
+QPushButton:hover
+{
+	background-color: #8E24AA;
+}
+
+QPushButton:pressed
+{
+	background-color: #3C3C3C;
+}</string>
+    </property>
+    <property name="text">
+     <string>Open via URL</string>
+    </property>
+    <property name="icon">
+     <iconset resource="res_rс.qrc">
+      <normaloff>:/icon/icons/url.svg</normaloff>:/icon/icons/url.svg</iconset>
     </property>
    </widget>
   </widget>
  </widget>
  <resources>
-  <include location="res_rs.qrc"/>
+  <include location="res_rс.qrc"/>
  </resources>
  <connections/>
 </ui>

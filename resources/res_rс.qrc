@@ -1,0 +1,12 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>icons/url.svg</file>
+    <file>icons/filter.svg</file>
+    <file>icons/folder.svg</file>
+    <file>icons/grain.svg</file>
+    <file>icons/reflect_horizontally.svg</file>
+    <file>icons/reflect_vertically.svg</file>
+    <file>icons/rotate.svg</file>
+    <file>icons/save.svg</file>
+  </qresource>
+</RCC>

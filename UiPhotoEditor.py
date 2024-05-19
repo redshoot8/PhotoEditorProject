@@ -17,7 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QComboBox, QLabel, QMainWindow,
     QPushButton, QSizePolicy, QWidget)
-import res_rs
+import res_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -57,11 +57,11 @@ class Ui_MainWindow(object):
 "	background-color: #3C3C3C;\n"
 "}")
         icon = QIcon()
-        icon.addFile(u":/icon/recources/icons/folder.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/icon/icons/folder.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.openFileButton.setIcon(icon)
         self.applyFilterButton = QPushButton(self.centralwidget)
         self.applyFilterButton.setObjectName(u"applyFilterButton")
-        self.applyFilterButton.setGeometry(QRect(625, 260, 150, 40))
+        self.applyFilterButton.setGeometry(QRect(625, 310, 150, 40))
         self.applyFilterButton.setFont(font)
         self.applyFilterButton.setStyleSheet(u"QPushButton\n"
 "{\n"
@@ -81,15 +81,16 @@ class Ui_MainWindow(object):
 "	background-color: #3C3C3C;\n"
 "}")
         icon1 = QIcon()
-        icon1.addFile(u":/icon/recources/icons/filter.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon1.addFile(u":/icon/icons/filter.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.applyFilterButton.setIcon(icon1)
         self.filterHeader = QLabel(self.centralwidget)
         self.filterHeader.setObjectName(u"filterHeader")
-        self.filterHeader.setGeometry(QRect(625, 160, 150, 40))
+        self.filterHeader.setGeometry(QRect(625, 210, 150, 40))
         font1 = QFont()
         font1.setPointSize(16)
         self.filterHeader.setFont(font1)
-        self.filterHeader.setStyleSheet(u"background-color: none;")
+        self.filterHeader.setStyleSheet(u"background-color: none;\n"
+"color: #FFFFFF;")
         self.filterHeader.setScaledContents(False)
         self.filterHeader.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.comboBox = QComboBox(self.centralwidget)
@@ -107,7 +108,7 @@ class Ui_MainWindow(object):
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.setObjectName(u"comboBox")
-        self.comboBox.setGeometry(QRect(625, 210, 150, 40))
+        self.comboBox.setGeometry(QRect(625, 260, 150, 40))
         self.comboBox.setFont(font)
         self.comboBox.setStyleSheet(u"background-color: #3C3C3C;\n"
 "color: #FFFFFF;\n"
@@ -115,7 +116,7 @@ class Ui_MainWindow(object):
 "padding-left: 5px;")
         self.saveFileButton = QPushButton(self.centralwidget)
         self.saveFileButton.setObjectName(u"saveFileButton")
-        self.saveFileButton.setGeometry(QRect(625, 110, 150, 40))
+        self.saveFileButton.setGeometry(QRect(625, 160, 150, 40))
         self.saveFileButton.setFont(font)
         self.saveFileButton.setStyleSheet(u"QPushButton\n"
 "{\n"
@@ -135,25 +136,27 @@ class Ui_MainWindow(object):
 "	background-color: #1E88E5;\n"
 "}")
         icon2 = QIcon()
-        icon2.addFile(u":/icon/recources/icons/save.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon2.addFile(u":/icon/icons/save.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.saveFileButton.setIcon(icon2)
         self.fileHeader = QLabel(self.centralwidget)
         self.fileHeader.setObjectName(u"fileHeader")
         self.fileHeader.setGeometry(QRect(625, 10, 150, 40))
         self.fileHeader.setFont(font1)
-        self.fileHeader.setStyleSheet(u"background-color: none;")
+        self.fileHeader.setStyleSheet(u"background-color: none;\n"
+"color: #FFFFFF;")
         self.fileHeader.setScaledContents(False)
         self.fileHeader.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.optionsHeader = QLabel(self.centralwidget)
         self.optionsHeader.setObjectName(u"optionsHeader")
-        self.optionsHeader.setGeometry(QRect(625, 310, 150, 40))
+        self.optionsHeader.setGeometry(QRect(625, 360, 150, 40))
         self.optionsHeader.setFont(font1)
-        self.optionsHeader.setStyleSheet(u"background-color: none;")
+        self.optionsHeader.setStyleSheet(u"background-color: none;\n"
+"color: #FFFFFF;")
         self.optionsHeader.setScaledContents(False)
         self.optionsHeader.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.reflectVertButton = QPushButton(self.centralwidget)
         self.reflectVertButton.setObjectName(u"reflectVertButton")
-        self.reflectVertButton.setGeometry(QRect(625, 360, 150, 40))
+        self.reflectVertButton.setGeometry(QRect(625, 410, 150, 40))
         self.reflectVertButton.setFont(font)
         self.reflectVertButton.setStyleSheet(u"QPushButton\n"
 "{\n"
@@ -173,11 +176,11 @@ class Ui_MainWindow(object):
 "	background-color: #3C3C3C;\n"
 "}")
         icon3 = QIcon()
-        icon3.addFile(u":/icon/recources/icons/reflect_vertically.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon3.addFile(u":/icon/icons/reflect_vertically.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.reflectVertButton.setIcon(icon3)
         self.reflectHorizonButton = QPushButton(self.centralwidget)
         self.reflectHorizonButton.setObjectName(u"reflectHorizonButton")
-        self.reflectHorizonButton.setGeometry(QRect(625, 410, 150, 40))
+        self.reflectHorizonButton.setGeometry(QRect(625, 460, 150, 40))
         self.reflectHorizonButton.setFont(font)
         self.reflectHorizonButton.setStyleSheet(u"QPushButton\n"
 "{\n"
@@ -197,11 +200,11 @@ class Ui_MainWindow(object):
 "	background-color: #3C3C3C;\n"
 "}")
         icon4 = QIcon()
-        icon4.addFile(u":/icon/recources/icons/reflect_horizontally.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon4.addFile(u":/icon/icons/reflect_horizontally.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.reflectHorizonButton.setIcon(icon4)
         self.rotateButton = QPushButton(self.centralwidget)
         self.rotateButton.setObjectName(u"rotateButton")
-        self.rotateButton.setGeometry(QRect(625, 460, 150, 40))
+        self.rotateButton.setGeometry(QRect(625, 510, 150, 40))
         self.rotateButton.setFont(font)
         self.rotateButton.setStyleSheet(u"QPushButton\n"
 "{\n"
@@ -221,8 +224,32 @@ class Ui_MainWindow(object):
 "	background-color: #3C3C3C;\n"
 "}")
         icon5 = QIcon()
-        icon5.addFile(u":/icon/recources/icons/rotate.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon5.addFile(u":/icon/icons/rotate.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.rotateButton.setIcon(icon5)
+        self.openURLButton = QPushButton(self.centralwidget)
+        self.openURLButton.setObjectName(u"openURLButton")
+        self.openURLButton.setGeometry(QRect(625, 110, 150, 40))
+        self.openURLButton.setFont(font)
+        self.openURLButton.setStyleSheet(u"QPushButton\n"
+"{\n"
+"	background-color: #3C3C3C;\n"
+"	color: #FFFFFF;\n"
+"	border: 1px solid #5A5A5A;\n"
+"	border-radius: 20px;\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"	background-color: #8E24AA;\n"
+"}\n"
+"\n"
+"QPushButton:pressed\n"
+"{\n"
+"	background-color: #3C3C3C;\n"
+"}")
+        icon6 = QIcon()
+        icon6.addFile(u":/icon/icons/url.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.openURLButton.setIcon(icon6)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -231,7 +258,7 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Photo Editor", None))
         self.imageWidget.setText(QCoreApplication.translate("MainWindow", u"Image", None))
         self.openFileButton.setText(QCoreApplication.translate("MainWindow", u"Open file", None))
         self.applyFilterButton.setText(QCoreApplication.translate("MainWindow", u"Apply filter", None))
@@ -257,5 +284,6 @@ class Ui_MainWindow(object):
         self.reflectVertButton.setText(QCoreApplication.translate("MainWindow", u"Reflect vertically", None))
         self.reflectHorizonButton.setText(QCoreApplication.translate("MainWindow", u"Reflect horizontally", None))
         self.rotateButton.setText(QCoreApplication.translate("MainWindow", u"Rotate", None))
+        self.openURLButton.setText(QCoreApplication.translate("MainWindow", u"Open via URL", None))
     # retranslateUi
 
