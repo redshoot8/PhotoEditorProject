@@ -33,6 +33,9 @@ class Ui_Dialog(object):
         self.URLEdit = QLineEdit(self.frame)
         self.URLEdit.setObjectName(u"URLEdit")
         self.URLEdit.setGeometry(QRect(50, 80, 250, 40))
+        font = QFont()
+        font.setPointSize(10)
+        self.URLEdit.setFont(font)
         self.URLEdit.setStyleSheet(u"background-color: #3C3C3C;\n"
 "color: #FFFFFF;\n"
 "border: 1px solid #5A5A5A;\n"
@@ -41,8 +44,6 @@ class Ui_Dialog(object):
         self.URLButton = QPushButton(self.frame)
         self.URLButton.setObjectName(u"URLButton")
         self.URLButton.setGeometry(QRect(100, 140, 150, 40))
-        font = QFont()
-        font.setPointSize(10)
         self.URLButton.setFont(font)
         self.URLButton.setStyleSheet(u"QPushButton\n"
 "{\n"
