@@ -1,4 +1,4 @@
-from PySide6.QtCore import Qt, QPoint, QSize
+from PySide6.QtCore import Qt, QPoint
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QDialog
 from PySide6.QtGui import QPixmap
 from UiPhotoEditor import Ui_MainWindow
