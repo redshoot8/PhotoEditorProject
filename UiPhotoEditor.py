@@ -61,7 +61,7 @@ class Ui_MainWindow(object):
         self.openFileButton.setIcon(icon)
         self.applyFilterButton = QPushButton(self.centralwidget)
         self.applyFilterButton.setObjectName(u"applyFilterButton")
-        self.applyFilterButton.setGeometry(QRect(625, 350, 150, 40))
+        self.applyFilterButton.setGeometry(QRect(750, 300, 41, 40))
         self.applyFilterButton.setFont(font)
         self.applyFilterButton.setStyleSheet(u"QPushButton\n"
 "{\n"
@@ -93,24 +93,24 @@ class Ui_MainWindow(object):
 "color: #FFFFFF;")
         self.filterHeader.setScaledContents(False)
         self.filterHeader.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.comboBox = QComboBox(self.centralwidget)
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.setObjectName(u"comboBox")
-        self.comboBox.setGeometry(QRect(625, 300, 150, 40))
-        self.comboBox.setFont(font)
-        self.comboBox.setStyleSheet(u"background-color: #3C3C3C;\n"
+        self.filterBox = QComboBox(self.centralwidget)
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.filterBox.setObjectName(u"filterBox")
+        self.filterBox.setGeometry(QRect(625, 300, 121, 40))
+        self.filterBox.setFont(font)
+        self.filterBox.setStyleSheet(u"background-color: #3C3C3C;\n"
 "color: #FFFFFF;\n"
 "border: 1px solid #5A5A5A;\n"
 "padding-left: 5px;")
@@ -272,9 +272,33 @@ class Ui_MainWindow(object):
 "	background-color: #3C3C3C;\n"
 "}")
         self.pasteImageButton.setIcon(icon)
+        self.brushButton = QPushButton(self.centralwidget)
+        self.brushButton.setObjectName(u"brushButton")
+        self.brushButton.setGeometry(QRect(750, 350, 41, 40))
+        self.brushButton.setFont(font)
+        self.brushButton.setStyleSheet(u"QPushButton\n"
+"{\n"
+"	background-color: #3C3C3C;\n"
+"	color: #FFFFFF;\n"
+"	border: 1px solid #5A5A5A;\n"
+"	border-radius: 20px;\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"	background-color: #8E24AA;\n"
+"}\n"
+"\n"
+"QPushButton:pressed\n"
+"{\n"
+"	background-color: #3C3C3C;\n"
+"}")
+        icon7 = QIcon()
+        icon7.addFile(u":/icon/icons/brush.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.brushButton.setIcon(icon7)
         self.undoButton = QPushButton(self.centralwidget)
         self.undoButton.setObjectName(u"undoButton")
-        self.undoButton.setGeometry(QRect(600, 0, 41, 40))
+        self.undoButton.setGeometry(QRect(10, 0, 41, 40))
         self.undoButton.setFont(font)
         self.undoButton.setStyleSheet(u"QPushButton\n"
 "{\n"
@@ -293,9 +317,26 @@ class Ui_MainWindow(object):
 "{\n"
 "	background-color: #3C3C3C;\n"
 "}")
-        icon7 = QIcon()
-        icon7.addFile(u":/icon/icons/undo.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.undoButton.setIcon(icon7)
+        icon8 = QIcon()
+        icon8.addFile(u":/icon/icons/undo.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.undoButton.setIcon(icon8)
+        self.colorBox = QComboBox(self.centralwidget)
+        self.colorBox.addItem("")
+        self.colorBox.addItem("")
+        self.colorBox.addItem("")
+        self.colorBox.addItem("")
+        self.colorBox.addItem("")
+        self.colorBox.addItem("")
+        self.colorBox.addItem("")
+        self.colorBox.addItem("")
+        self.colorBox.addItem("")
+        self.colorBox.setObjectName(u"colorBox")
+        self.colorBox.setGeometry(QRect(625, 350, 121, 40))
+        self.colorBox.setFont(font)
+        self.colorBox.setStyleSheet(u"background-color: #3C3C3C;\n"
+"color: #FFFFFF;\n"
+"border: 1px solid #5A5A5A;\n"
+"padding-left: 5px;")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -307,23 +348,23 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Photo Editor", None))
         self.imageWidget.setText(QCoreApplication.translate("MainWindow", u"Image", None))
         self.openFileButton.setText(QCoreApplication.translate("MainWindow", u"Open file", None))
-        self.applyFilterButton.setText(QCoreApplication.translate("MainWindow", u"Apply filter", None))
+        self.applyFilterButton.setText("")
         self.filterHeader.setText(QCoreApplication.translate("MainWindow", u"Filter", None))
-        self.comboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"Blur", None))
-        self.comboBox.setItemText(1, QCoreApplication.translate("MainWindow", u"BoxBlur", None))
-        self.comboBox.setItemText(2, QCoreApplication.translate("MainWindow", u"Contour", None))
-        self.comboBox.setItemText(3, QCoreApplication.translate("MainWindow", u"Detail", None))
-        self.comboBox.setItemText(4, QCoreApplication.translate("MainWindow", u"EdgeEnhance", None))
-        self.comboBox.setItemText(5, QCoreApplication.translate("MainWindow", u"EdgeEnhanceMore", None))
-        self.comboBox.setItemText(6, QCoreApplication.translate("MainWindow", u"Emboss", None))
-        self.comboBox.setItemText(7, QCoreApplication.translate("MainWindow", u"FindEdges", None))
-        self.comboBox.setItemText(8, QCoreApplication.translate("MainWindow", u"GaussianBlur", None))
-        self.comboBox.setItemText(9, QCoreApplication.translate("MainWindow", u"Kernel", None))
-        self.comboBox.setItemText(10, QCoreApplication.translate("MainWindow", u"Sharpen", None))
-        self.comboBox.setItemText(11, QCoreApplication.translate("MainWindow", u"Smooth", None))
-        self.comboBox.setItemText(12, QCoreApplication.translate("MainWindow", u"SmoothMore", None))
+        self.filterBox.setItemText(0, QCoreApplication.translate("MainWindow", u"Blur", None))
+        self.filterBox.setItemText(1, QCoreApplication.translate("MainWindow", u"BoxBlur", None))
+        self.filterBox.setItemText(2, QCoreApplication.translate("MainWindow", u"Contour", None))
+        self.filterBox.setItemText(3, QCoreApplication.translate("MainWindow", u"Detail", None))
+        self.filterBox.setItemText(4, QCoreApplication.translate("MainWindow", u"EdgeEnhance", None))
+        self.filterBox.setItemText(5, QCoreApplication.translate("MainWindow", u"EdgeEnhanceMore", None))
+        self.filterBox.setItemText(6, QCoreApplication.translate("MainWindow", u"Emboss", None))
+        self.filterBox.setItemText(7, QCoreApplication.translate("MainWindow", u"FindEdges", None))
+        self.filterBox.setItemText(8, QCoreApplication.translate("MainWindow", u"GaussianBlur", None))
+        self.filterBox.setItemText(9, QCoreApplication.translate("MainWindow", u"Kernel", None))
+        self.filterBox.setItemText(10, QCoreApplication.translate("MainWindow", u"Sharpen", None))
+        self.filterBox.setItemText(11, QCoreApplication.translate("MainWindow", u"Smooth", None))
+        self.filterBox.setItemText(12, QCoreApplication.translate("MainWindow", u"SmoothMore", None))
 
-        self.comboBox.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Choose Filter", None))
+        self.filterBox.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Choose Filter", None))
         self.saveFileButton.setText(QCoreApplication.translate("MainWindow", u"Save file", None))
         self.fileHeader.setText(QCoreApplication.translate("MainWindow", u"File", None))
         self.optionsHeader.setText(QCoreApplication.translate("MainWindow", u"Options", None))
@@ -332,6 +373,18 @@ class Ui_MainWindow(object):
         self.rotateButton.setText(QCoreApplication.translate("MainWindow", u"Rotate", None))
         self.openURLButton.setText(QCoreApplication.translate("MainWindow", u"Open via URL", None))
         self.pasteImageButton.setText(QCoreApplication.translate("MainWindow", u"Paste image", None))
+        self.brushButton.setText("")
         self.undoButton.setText("")
+        self.colorBox.setItemText(0, QCoreApplication.translate("MainWindow", u"White", None))
+        self.colorBox.setItemText(1, QCoreApplication.translate("MainWindow", u"Black", None))
+        self.colorBox.setItemText(2, QCoreApplication.translate("MainWindow", u"Red", None))
+        self.colorBox.setItemText(3, QCoreApplication.translate("MainWindow", u"Orange", None))
+        self.colorBox.setItemText(4, QCoreApplication.translate("MainWindow", u"Yellow", None))
+        self.colorBox.setItemText(5, QCoreApplication.translate("MainWindow", u"Green", None))
+        self.colorBox.setItemText(6, QCoreApplication.translate("MainWindow", u"Azure", None))
+        self.colorBox.setItemText(7, QCoreApplication.translate("MainWindow", u"Blue", None))
+        self.colorBox.setItemText(8, QCoreApplication.translate("MainWindow", u"Purple", None))
+
+        self.colorBox.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Choose color", None))
     # retranslateUi
 

@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icon">
+    <file>icons/brush.svg</file>
     <file>icons/undo.svg</file>
     <file>icons/url.svg</file>
     <file>icons/filter.svg</file>

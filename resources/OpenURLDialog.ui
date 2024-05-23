@@ -125,9 +125,9 @@ color: #FFFFFF;</string>
    <widget class="QLabel" name="URLError">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>25</x>
       <y>200</y>
-      <width>250</width>
+      <width>300</width>
       <height>20</height>
      </rect>
     </property>

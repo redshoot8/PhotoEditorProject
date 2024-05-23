@@ -76,7 +76,7 @@ class Ui_Dialog(object):
         self.URLHeader.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.URLError = QLabel(self.frame)
         self.URLError.setObjectName(u"URLError")
-        self.URLError.setGeometry(QRect(50, 200, 250, 20))
+        self.URLError.setGeometry(QRect(25, 200, 300, 20))
         font2 = QFont()
         font2.setPointSize(10)
         font2.setBold(False)

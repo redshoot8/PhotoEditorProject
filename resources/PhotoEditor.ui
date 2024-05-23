@@ -81,9 +81,9 @@ QPushButton:pressed
    <widget class="QPushButton" name="applyFilterButton">
     <property name="geometry">
      <rect>
-      <x>625</x>
-      <y>350</y>
-      <width>150</width>
+      <x>750</x>
+      <y>300</y>
+      <width>41</width>
       <height>40</height>
      </rect>
     </property>
@@ -112,7 +112,7 @@ QPushButton:pressed
 }</string>
     </property>
     <property name="text">
-     <string>Apply filter</string>
+     <string/>
     </property>
     <property name="icon">
      <iconset resource="res_rс.qrc">
@@ -147,12 +147,12 @@ color: #FFFFFF;</string>
      <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox">
+   <widget class="QComboBox" name="filterBox">
     <property name="geometry">
      <rect>
       <x>625</x>
       <y>300</y>
-      <width>150</width>
+      <width>121</width>
       <height>40</height>
      </rect>
     </property>
@@ -538,10 +538,51 @@ QPushButton:pressed
       <normaloff>:/icon/icons/folder.svg</normaloff>:/icon/icons/folder.svg</iconset>
     </property>
    </widget>
+   <widget class="QPushButton" name="brushButton">
+    <property name="geometry">
+     <rect>
+      <x>750</x>
+      <y>350</y>
+      <width>41</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+	background-color: #3C3C3C;
+	color: #FFFFFF;
+	border: 1px solid #5A5A5A;
+	border-radius: 20px;
+}
+
+QPushButton:hover
+{
+	background-color: #8E24AA;
+}
+
+QPushButton:pressed
+{
+	background-color: #3C3C3C;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="res_rс.qrc">
+      <normaloff>:/icon/icons/brush.svg</normaloff>:/icon/icons/brush.svg</iconset>
+    </property>
+   </widget>
    <widget class="QPushButton" name="undoButton">
     <property name="geometry">
      <rect>
-      <x>600</x>
+      <x>10</x>
       <y>0</y>
       <width>41</width>
       <height>40</height>
@@ -578,6 +619,75 @@ QPushButton:pressed
      <iconset resource="res_rс.qrc">
       <normaloff>:/icon/icons/undo.svg</normaloff>:/icon/icons/undo.svg</iconset>
     </property>
+   </widget>
+   <widget class="QComboBox" name="colorBox">
+    <property name="geometry">
+     <rect>
+      <x>625</x>
+      <y>350</y>
+      <width>121</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #3C3C3C;
+color: #FFFFFF;
+border: 1px solid #5A5A5A;
+padding-left: 5px;</string>
+    </property>
+    <property name="placeholderText">
+     <string>Choose color</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>White</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Black</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Red</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Orange</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Yellow</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Green</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Azure</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Blue</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Purple</string>
+     </property>
+    </item>
    </widget>
   </widget>
  </widget>
