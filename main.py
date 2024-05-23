@@ -190,34 +190,37 @@ class PhotoEditor(QMainWindow):
         if self.temp_file_path:
             image = Image.open(self.temp_file_path)
             image.save(self.back_file_path)
-            if self.ui.comboBox.currentText() == "Blur":
+            if self.ui.filterBox.currentText() == "Blur":
                 image = image.filter(ImageFilter.BLUR)
-            elif self.ui.comboBox.currentText() == "BoxBlur":
+            elif self.ui.filterBox.currentText() == "BoxBlur":
                 image = image.filter(ImageFilter.BoxBlur(radius=50))
-            elif self.ui.comboBox.currentText() == "Contour":
+            elif self.ui.filterBox.currentText() == "Contour":
                 image = image.filter(ImageFilter.CONTOUR)
-            elif self.ui.comboBox.currentText() == "Detail":
+            elif self.ui.filterBox.currentText() == "Detail":
                 image = image.filter(ImageFilter.DETAIL)
-            elif self.ui.comboBox.currentText() == "EdgeEnhance":
+            elif self.ui.filterBox.currentText() == "EdgeEnhance":
                 image = image.filter(ImageFilter.EDGE_ENHANCE)
-            elif self.ui.comboBox.currentText() == "EdgeEnhanceMore":
+            elif self.ui.filterBox.currentText() == "EdgeEnhanceMore":
                 image = image.filter(ImageFilter.EDGE_ENHANCE_MORE)
-            elif self.ui.comboBox.currentText() == "Emboss":
+            elif self.ui.filterBox.currentText() == "Emboss":
                 image = image.filter(ImageFilter.EMBOSS)
-            elif self.ui.comboBox.currentText() == "FindEdges":
+            elif self.ui.filterBox.currentText() == "FindEdges":
                 image = image.filter(ImageFilter.FIND_EDGES)
-            elif self.ui.comboBox.currentText() == "GaussianBlur":
+            elif self.ui.filterBox.currentText() == "GaussianBlur":
                 image = image.filter(ImageFilter.GaussianBlur)
-            elif self.ui.comboBox.currentText() == "Kernel":
+            elif self.ui.filterBox.currentText() == "Kernel":
                 image = image.filter(ImageFilter.Kernel((3, 3), (2, 2, 2, 2, 2, 2, 2, 2, 2)))
-            elif self.ui.comboBox.currentText() == "Sharpen":
+            elif self.ui.filterBox.currentText() == "Sharpen":
                 image = image.filter(ImageFilter.SHARPEN)
-            elif self.ui.comboBox.currentText() == "Smooth":
+            elif self.ui.filterBox.currentText() == "Smooth":
                 image = image.filter(ImageFilter.SMOOTH)
-            elif self.ui.comboBox.currentText() == "SmoothMore":
+            elif self.ui.filterBox.currentText() == "SmoothMore":
                 image = image.filter(ImageFilter.SMOOTH_MORE)
             image.save(self.temp_file_path)
             self.show_changes()
+
+    def start_painting(self) -> None:  # Start to paint on image with chosen color
+        pass
 
     def reflect_vertically(self) -> None:  # Reflect vertically slot
         """Reflecting current image vertically"""
