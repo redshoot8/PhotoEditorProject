@@ -35,6 +35,7 @@ class PhotoEditor(QMainWindow):
 
         # Connecting button signals with slots
         self.ui.undoButton.clicked.connect(self.undo_changes)  # Undo changes button
+        self.ui.brushButton.clicked.connect(self.start_painting())  # Brush button
         self.ui.openFileButton.clicked.connect(self.open_file)  # Open file button
         self.ui.pasteImageButton.clicked.connect(self.choose_image_to_paste)  # Paste image button
         self.ui.openURLButton.clicked.connect(self.open_via_url)  # Open via URL button
@@ -89,6 +90,9 @@ class PhotoEditor(QMainWindow):
         """Cancels the changes by one step"""
         Image.open(self.back_file_path).save(self.temp_file_path)
         self.show_changes()
+
+    def start_painting(self) -> None:  # Start to paint on image with chosen color
+        pass
 
     def open_file(self) -> None:  # Open file slot
         """Opening the file and saving its name in class field named 'image_path'"""
@@ -218,9 +222,6 @@ class PhotoEditor(QMainWindow):
                 image = image.filter(ImageFilter.SMOOTH_MORE)
             image.save(self.temp_file_path)
             self.show_changes()
-
-    def start_painting(self) -> None:  # Start to paint on image with chosen color
-        pass
 
     def reflect_vertically(self) -> None:  # Reflect vertically slot
         """Reflecting current image vertically"""
