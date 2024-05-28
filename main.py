@@ -1,6 +1,6 @@
 from PySide6.QtCore import Qt, QPoint
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QDialog
-from PySide6.QtGui import QPixmap
+from PySide6.QtGui import QPixmap, QPainter, QPen, QColor
 from UiPhotoEditor import Ui_MainWindow
 from UiOpenURLDialog import Ui_Dialog
 from PIL import Image, ImageFilter
@@ -30,8 +30,13 @@ class PhotoEditor(QMainWindow):
         self.scale_factor = 1.0  # For scaling some images
 
         # For mouse events
-        self.is_dragging = None
+        self.is_dragging = False
         self.drag_start_position = None
+
+        # For painting
+        self.is_painting = False
+        self.last_point = None
+        self.color = None
 
         # Connecting button signals with slots
         self.ui.undoButton.clicked.connect(self.undo_changes)  # Undo changes button
@@ -46,20 +51,37 @@ class PhotoEditor(QMainWindow):
         self.ui.rotateButton.clicked.connect(self.rotate_90)  # Rotate button
 
     def mousePressEvent(self, event):  # Mouse press slot
-        if event.button() == Qt.MouseButton.LeftButton and self.overlay_image:
+        if event.button() == Qt.MouseButton.LeftButton:
             self.is_dragging = True
-            self.drag_start_position = event.position()
+            if self.overlay_image:
+                self.drag_start_position = event.position()
+            elif self.is_painting:
+                self.last_point = event.position().toPoint()
 
     def mouseMoveEvent(self, event):  # Mouse move slot
-        if self.is_dragging and self.overlay_image:
-            delta = event.position() - self.drag_start_position
-            self.overlay_position += delta.toPoint()
-            self.drag_start_position = event.position()
-            self.paste_image()
+        if self.is_dragging:
+            if self.overlay_image:
+                delta = event.position() - self.drag_start_position
+                self.overlay_position += delta.toPoint()
+                self.drag_start_position = event.position()
+                self.paste_image()
+            elif self.is_painting:
+                painter = QPainter(self.ui.imageWidget.pixmap())
+                pen = QPen(self.color, 3, Qt.PenStyle.SolidLine, Qt.PenCapStyle.RoundCap, Qt.PenJoinStyle.RoundJoin)
+                painter.setPen(pen)
+                painter.drawLine(self.last_point, event.position().toPoint())
+                self.last_point = event.position().toPoint()
+                painter.end()
+                self.update()
 
     def mouseReleaseEvent(self, event):  # Mouse release slot
-        if event.button() == Qt.MouseButton.LeftButton and self.overlay_image:
+        if event.button() == Qt.MouseButton.LeftButton:
             self.is_dragging = False
+            if self.is_painting:
+                self.is_painting = False
+                pixmap = self.ui.imageWidget.pixmap()
+                pixmap.save(self.temp_file_path)
+                self.show_changes()
 
     def wheelEvent(self, event):  # Mouse wheel slot
         if self.overlay_image:
@@ -74,8 +96,8 @@ class PhotoEditor(QMainWindow):
             self.scale_factor = 1.0
             self.paste_image()
 
-    def enterEvent(self, event):  # Keyboard slot
-        if event.button() == Qt.Key.Key_Enter:
+    def keyPressEvent(self, event):  # Keyboard slot
+        if event.key() == Qt.Key.Key_Enter or event.key() == Qt.Key.Key_Return:
             self.overlay_image = None
             self.overlay_position = QPoint(0, 0)
 
@@ -92,7 +114,25 @@ class PhotoEditor(QMainWindow):
         self.show_changes()
 
     def start_painting(self) -> None:  # Start to paint on image with chosen color
-        pass
+        if self.ui.filterBox.currentText() == "White":
+            self.color = QColor(255, 255, 255)
+        elif self.ui.filterBox.currentText() == "Black":
+            self.color = QColor(0, 0, 0)
+        elif self.ui.filterBox.currentText() == "Red":
+            self.color = QColor(255, 0, 0)
+        elif self.ui.filterBox.currentText() == "Orange":
+            self.color = QColor(255, 165, 0)
+        elif self.ui.filterBox.currentText() == "Yellow":
+            self.color = QColor(255, 255, 0)
+        elif self.ui.filterBox.currentText() == "Green":
+            self.color = QColor(0, 255, 0)
+        elif self.ui.filterBox.currentText() == "Azure":
+            self.color = QColor(240, 255, 255)
+        elif self.ui.filterBox.currentText() == "Blue":
+            self.color = QColor(0, 0, 255)
+        elif self.ui.filterBox.currentText() == "Purple":
+            self.color = QColor(255, 0,255)
+        self.is_painting = True
 
     def open_file(self) -> None:  # Open file slot
         """Opening the file and saving its name in class field named 'image_path'"""
@@ -130,7 +170,7 @@ class PhotoEditor(QMainWindow):
         """Pasting new image on current image"""
         if self.overlay_image:
             image = Image.open(self.back_file_path)
-            overlay_geometry = overlay_geometry = (self.overlay_position.x(), self.overlay_position.y())
+            overlay_geometry = (self.overlay_position.x(), self.overlay_position.y())
             overlay_image_resized = self.overlay_image.resize(
                 (min(image.width - overlay_geometry[0], self.overlay_image.width),
                  min(image.height - overlay_geometry[1], self.overlay_image.height)),
