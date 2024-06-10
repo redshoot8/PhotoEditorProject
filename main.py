@@ -40,7 +40,7 @@ class PhotoEditor(QMainWindow):
 
         # Connecting button signals with slots
         self.ui.undoButton.clicked.connect(self.undo_changes)  # Undo changes button
-        self.ui.brushButton.clicked.connect(self.start_painting())  # Brush button
+        self.ui.brushButton.clicked.connect(self.start_painting)  # Brush button
         self.ui.openFileButton.clicked.connect(self.open_file)  # Open file button
         self.ui.pasteImageButton.clicked.connect(self.choose_image_to_paste)  # Paste image button
         self.ui.openURLButton.clicked.connect(self.open_via_url)  # Open via URL button
@@ -66,13 +66,20 @@ class PhotoEditor(QMainWindow):
                 self.drag_start_position = event.position()
                 self.paste_image()
             elif self.is_painting:
-                painter = QPainter(self.ui.imageWidget.pixmap())
-                pen = QPen(self.color, 3, Qt.PenStyle.SolidLine, Qt.PenCapStyle.RoundCap, Qt.PenJoinStyle.RoundJoin)
-                painter.setPen(pen)
-                painter.drawLine(self.last_point, event.position().toPoint())
-                self.last_point = event.position().toPoint()
-                painter.end()
-                self.update()
+                pixmap = self.ui.imageWidget.pixmap()
+                if pixmap:
+                    painter = QPainter(pixmap)
+                    pen = QPen()
+                    pen.setColor(self.color)
+                    pen.setWidth(3)
+                    pen.setStyle(Qt.PenStyle.SolidLine)
+                    pen.setCapStyle(Qt.PenCapStyle.RoundCap)
+                    pen.setJoinStyle(Qt.PenJoinStyle.RoundJoin)
+                    painter.setPen(pen)
+                    painter.drawLine(self.last_point, event.position().toPoint())
+                    self.last_point = event.position().toPoint()
+                    painter.end()
+                    self.ui.imageWidget.setPixmap(pixmap)
 
     def mouseReleaseEvent(self, event):  # Mouse release slot
         if event.button() == Qt.MouseButton.LeftButton:
@@ -80,7 +87,8 @@ class PhotoEditor(QMainWindow):
             if self.is_painting:
                 self.is_painting = False
                 pixmap = self.ui.imageWidget.pixmap()
-                pixmap.save(self.temp_file_path)
+                if pixmap:
+                    pixmap.save(self.temp_file_path)
                 self.show_changes()
 
     def wheelEvent(self, event):  # Mouse wheel slot
@@ -114,23 +122,23 @@ class PhotoEditor(QMainWindow):
         self.show_changes()
 
     def start_painting(self) -> None:  # Start to paint on image with chosen color
-        if self.ui.filterBox.currentText() == "White":
+        if self.ui.colorBox.currentText() == "White":
             self.color = QColor(255, 255, 255)
-        elif self.ui.filterBox.currentText() == "Black":
+        elif self.ui.colorBox.currentText() == "Black":
             self.color = QColor(0, 0, 0)
-        elif self.ui.filterBox.currentText() == "Red":
+        elif self.ui.colorBox.currentText() == "Red":
             self.color = QColor(255, 0, 0)
-        elif self.ui.filterBox.currentText() == "Orange":
+        elif self.ui.colorBox.currentText() == "Orange":
             self.color = QColor(255, 165, 0)
-        elif self.ui.filterBox.currentText() == "Yellow":
+        elif self.ui.colorBox.currentText() == "Yellow":
             self.color = QColor(255, 255, 0)
-        elif self.ui.filterBox.currentText() == "Green":
+        elif self.ui.colorBox.currentText() == "Green":
             self.color = QColor(0, 255, 0)
-        elif self.ui.filterBox.currentText() == "Azure":
+        elif self.ui.colorBox.currentText() == "Azure":
             self.color = QColor(240, 255, 255)
-        elif self.ui.filterBox.currentText() == "Blue":
+        elif self.ui.colorBox.currentText() == "Blue":
             self.color = QColor(0, 0, 255)
-        elif self.ui.filterBox.currentText() == "Purple":
+        elif self.ui.colorBox.currentText() == "Purple":
             self.color = QColor(255, 0,255)
         self.is_painting = True
 
